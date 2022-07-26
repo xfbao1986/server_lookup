@@ -3,7 +3,6 @@
 import argparse
 import sys
 import time
-import ipaddress
 from lib.cpx_api import CpxApi
 from lib.pad import Pad
 
@@ -32,7 +31,7 @@ def generate_contents(args):
         for service, v in result_by_service.items():
             contents.append(service_line(service, v['status'], v['count']))
     elif args.ip:
-        ip = ipaddress.ip_address(args.ip)
+        ip = args.ip
         if not result_by_ip.get(ip):
             print('your input IP invalid.')
             sys.exit(1)
@@ -59,14 +58,17 @@ def data_print(args):
     contents = generate_contents(args)
     print(''.join(contents))
 
-def main():
+def parse_args():
     parser = argparse.ArgumentParser(description='check servers/services status')
     parser.add_argument('-s', '--byServer', help='check per server', action='store_true', default=False)
     parser.add_argument('-v', '--byService', help='check per service', action='store_true', default=False)
     parser.add_argument('--ip', help='which server want to check, input IP', type=str)
     parser.add_argument('--service', help='which service want to check, input service name', type=str)
     parser.add_argument('-w', '--watch', help='watch mode', action='store_true', default=False)
-    args = parser.parse_args()
+    return parser.parse_args()
+
+def main():
+    args = parse_args()
 
     if not (args.byServer or args.byService or args.ip or args.service):
         parser.print_help()

@@ -15,7 +15,7 @@ class CpxApi:
         ips = self.__get_response_json(self.__servers_url())
         ips = [ipaddress.ip_address(ip) for ip in ips]
         ips.sort()
-        return ips
+        return [str(ip) for ip in ips]
 
     def get_server_info(self, ip):
          return self.__get_response_json(self.__server_info_url(ip))

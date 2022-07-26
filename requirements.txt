@@ -1,1 +1,3 @@
 ipaddress
+pytest
+pytest-mock
