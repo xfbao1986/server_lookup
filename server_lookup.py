@@ -8,11 +8,15 @@ from lib.pad import Pad
 
 split_line = '-' * 100 + '\n'
 server_title_line = '%15s%20s%15s%15s%15s\n' % ('IP', 'Service', 'Status', 'CPU', 'Memory')
+sub_server_title_line = '\n%20s:\n%20s%15s%15s\n' % ('Member Servers', 'IP', 'CPU', 'Memory')
 service_title_line = '%20s%15s%15s\n' % ('Service', 'Status', 'Count')
 cpx = CpxApi()
 
 def server_line(ip, service, status, cpu, memory):
     return '%15s%20s%15s%15s%15s\n' % (ip, service, status, cpu, memory)
+
+def sub_server_line(ip, cpu, memory):
+    return '%20s%15s%15s\n' % (ip, cpu, memory)
 
 def service_line(service, status, count):
     return '%20s%15s%15s\n' % (service, status, count)
@@ -47,6 +51,10 @@ def generate_contents(args):
         contents.append(service_title_line)
         contents.append(split_line)
         contents.append(service_line(args.service, service_info['status'], service_info['count']))
+
+        contents.append(sub_server_title_line)
+        for ip in service_info['ips']:
+            contents.append(sub_server_line(ip, result_by_ip[ip]['cpu'], result_by_ip[ip]['memory']))
     return contents
 
 def data_refresh(args, pad):
