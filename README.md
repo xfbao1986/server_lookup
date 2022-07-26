@@ -55,6 +55,6 @@ python ./server_lookup.py --service <NAME> -w
     3. in watch mode, press 'q' or 'ctrl+c', will quit
     4. in watch mode, press 'j' will scroll down, press 'k' will scroll up.
 
-# demo
-![demo](./demo.mov)
+# demo video
+[![demo](https://img.youtube.com/vi/VwXm0QUeDqA/maxresdefault.jpg)](https://youtu.be/VwXm0QUeDqA)
 
