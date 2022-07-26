@@ -133,4 +133,9 @@ def test_server_lookup_service(mocker, capsys):
         '             Service         Status          Count',
         '----------------------------------------------------------------------------------------------------',
         '            BService        Healthy              2',
+        '',
+        '      Member Servers:',
+        '                  IP            CPU         Memory',
+        '         192.168.1.1            11%            12%',
+        '         192.168.1.5            51%            52%',
     ]) + '\n\n'
