@@ -74,7 +74,7 @@ pip install -r requirements.txt
    4. in watch mode, press 'j' will scroll down, press 'k' will scroll up.
 
 # example show
-[![demo](https://img.youtube.com/vi/VwXm0QUeDqA/maxresdefault.jpg)](https://youtu.be/VwXm0QUeDqA)
+[![demo](https://img.youtube.com/vi/-0HSnVVS_g8/maxresdefault.jpg)](https://youtu.be/-0HSnVVS_g8)
 
 # unit test
    * mock cpx_server response
@@ -139,3 +139,16 @@ pip install -r requirements.txt
    
    ============================================================================================ 5 passed in 0.22s =============================================================================================
    ```
+
+# summary
+   > I developed some similar tool(ruby version) for checking server status when I was in previous company. So basical feature I finished smoothly. We can get info based on server, or based on service. The watch mode (continuous tracing info & update on screen) took me some time. I searched and found curses (Terminal handling for display), which solved the problem.
+
+# furture improvement
+   * we can add more metrics, for example: now only CPU/Memory utilization percentage displayed for server, we can show CPU/Memory detail. (of course, depends on cpx api can provide or not)
+   * make the display result more user friendly, for example: if CPU/Memory utilization percentage over 70%, display in RED. if service status is Unhealthly, display in RED.
+   * create test case for watch mode
+      * if nothing press
+        - test output on screen will update every 5 seconds.
+        - test cpx api call will happen every 5 seconds.
+      * if press 'j' 'k', output on screen will scroll down or up
+
